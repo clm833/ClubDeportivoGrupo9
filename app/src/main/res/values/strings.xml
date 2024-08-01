@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ClubDeportivoGrupo9</string>
+    <string name="title_activity_registrar_usuario">RegistrarUsuario</string>
+    <string name="error_input_empty">Los campos no deben estar vacios</string>
+    <string name="error_not_a_valid_email">Email invalido</string>
+    <string name="error_invalid_credentials">Usuario o contraseña incorrecta</string>
+    <string name="default_description">Default</string>
+    <string name="show_less">Show less</string>
+    <string name="show_more">Show more</string>
+
+</resources>
