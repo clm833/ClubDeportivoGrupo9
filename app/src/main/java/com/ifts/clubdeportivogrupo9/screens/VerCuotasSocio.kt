@@ -58,7 +58,7 @@ fun VerCuotasSocio(
                 titleContentColor = MaterialTheme.colorScheme.primary,
             ),
             title = {
-            Text(text = "Cuotas que vencen hoy")
+            Text(text = "Cuotas del socio")
             },
             navigationIcon = {
                 IconButton(onClick = { /* do something */ }) {
