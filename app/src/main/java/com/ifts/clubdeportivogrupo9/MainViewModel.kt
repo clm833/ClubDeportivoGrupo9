@@ -96,26 +96,23 @@ class MainViewModel(
 
     fun listarCuotasQueVencen () {
         viewModelScope.launch {
-            val listaCuotas = cuotaMensualRepository.getCuotasMensuales() //
+            val listaCuotas = cuotaMensualRepository.getCuotasMensuales() // Devuelve el listado total de cuotas mensuales
             val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
             val fechaHoy = LocalDateTime.now().format(formatter).toString()
             val listaCuotasQueVencen = listaCuotas
-                .filter { it.fechaVencimiento == fechaHoy}
-                .filter { it.metodoPago == 0 }
+                .filter { it.fechaVencimiento == fechaHoy} // Compara la fecha actual
+                .filter { it.metodoPago == 0 } // Filtra que la cuota no esté pagada
 
             state = state.copy(
                 listaCuotas = listaCuotasQueVencen
-//                listaCuotas = listaCuotas
             )
         }
     }
 
-    fun listarCuotasDeSocio (numSocio:Int?) {
+    fun listarCuotasDeSocio (numSocio:Int?) { // Devuelve el listado completo de cuotas correspondientes a un socio
         viewModelScope.launch {
+
             val listaCuotas = cuotaMensualRepository.getCuotasMensualesByNumSocio(numSocio) //
-//            val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-//            val fechaHoy = LocalDateTime.now().format(formatter).toString()
-//            val listaCuotasQueVencen = listaCuotas.filter { it.fechaVencimiento == fechaHoy}
 
             state = state.copy(
                 listaCuotasByNumSocio = listaCuotas
@@ -123,7 +120,7 @@ class MainViewModel(
         }
     }
 
-    fun pagarCuotaMensual (idCuota:Int, metodoPago: Int) {
+    fun pagarCuotaMensual (idCuota:Int, metodoPago: Int) { //Actualiza el medio y la fecha de pago de una cuota
         viewModelScope.launch {
 
             val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
@@ -135,6 +132,9 @@ class MainViewModel(
         }
     }
 
+
+
+    // Genera una cuota de manera aleatoria
     fun insertarCuotas() {
         val diaRandom = Random.nextInt(1, 30)
         val mesRandom = Random.nextInt(1, 12)
